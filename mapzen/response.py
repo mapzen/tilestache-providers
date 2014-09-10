@@ -2,12 +2,19 @@ from mapzen.mimetypes import lookup_extension
 from string import Template
 import urllib2
 
+def make_url_opener(cls):
+    return urllib2.build_opener(urllib2.ProxyHandler({}))
+
 class ProxyTile(object):
 
-    def __init__(self, url, timeout):
+    bufsize = 8192
+
+    # for tests
+    make_url_opener = make_url_opener
+
+    def __init__(self, url, timeout=None):
         self.url = url
         self.timeout = timeout
-        self.bufsize = 8192
 
     def save(self, out, format):
         extension = lookup_extension(format)
@@ -15,7 +22,8 @@ class ProxyTile(object):
             raise Exception('You can\'t fool me twice!')
         url = Template(self.url).substitute(dict(format=extension))
 
-        url_opener = urllib2.build_opener(urllib2.ProxyHandler({}))
+        # we want a separate instance of the url opener every time
+        url_opener = self.make_url_opener()
         url_fp = url_opener.open(url, timeout=self.timeout)
 
         while True:

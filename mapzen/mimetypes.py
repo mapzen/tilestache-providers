@@ -8,6 +8,12 @@ extension_to_mime = dict(
 def lookup_mimetype(extension):
     return extension_to_mime.get(extension)
 
+def lookup_mimetype_from_format_name(format_name):
+    for extension, (mime, format) in extension_to_mime.items():
+        if format == format_name:
+            return mime
+    return None
+
 def lookup_extension(format_name):
     for extension, (mime, format) in extension_to_mime.items():
         if format == format_name:

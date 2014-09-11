@@ -20,6 +20,7 @@ setup(name='tilestache-providers',
       test_suite='tests',
       install_requires=[
           'modestmaps',
+          'boto',
       ],
       entry_points="""
       # -*- Entry points: -*-

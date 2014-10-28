@@ -1,7 +1,7 @@
 from mapzen.mimetypes import lookup_mimetype
 from mapzen.response import ProxyTile
 from ModestMaps.Providers import TemplatedMercatorProvider
-import urllib2
+
 
 class Proxy(object):
 

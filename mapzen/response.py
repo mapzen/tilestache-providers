@@ -2,8 +2,10 @@ from mapzen.mimetypes import lookup_extension
 from string import Template
 import urllib2
 
+
 def make_url_opener(cls):
     return urllib2.build_opener(urllib2.ProxyHandler({}))
+
 
 class ProxyTile(object):
 

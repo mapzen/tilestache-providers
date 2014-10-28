@@ -3,6 +3,7 @@ import unittest
 
 from mapzen.response import ProxyTile
 
+
 class StubOpener(object):
 
     def __init__(self, input):
@@ -13,8 +14,10 @@ class StubOpener(object):
         self.timeout = timeout
         return StringIO(self.input)
 
+
 def make_stub_opener(stub):
-    return lambda:stub
+    return lambda: stub
+
 
 class TestProxyTile(unittest.TestCase):
 
@@ -32,6 +35,7 @@ class TestProxyTile(unittest.TestCase):
 
     def test_create(self):
         proxy_tile = self._makeone()
+        self.failUnless(proxy_tile is not None)
 
     def test_save_invalid_format(self):
         proxy_tile = self._makeone()

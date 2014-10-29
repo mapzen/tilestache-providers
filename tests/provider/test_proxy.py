@@ -7,7 +7,7 @@ class TestProxy(unittest.TestCase):
            '+y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over')
 
     def _instance(self, *args, **kwargs):
-        from mapzen.providers import Proxy
+        from mapzen.provider import Proxy
         return Proxy(*args, **kwargs)
 
     def _makeone(self):

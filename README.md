@@ -1,3 +1,5 @@
+[![Circle CI](https://circleci.com/gh/mapzen/tilestache-providers/tree/master.png?style=badge)](https://circleci.com/gh/mapzen/tilestache-providers/tree/master)
+
 # Tilestache Providers
 
 This will hold Mapzen specific Tilestache providers. Hopefully this will

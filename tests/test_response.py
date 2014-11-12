@@ -1,8 +1,6 @@
 from StringIO import StringIO
 import unittest
 
-from mapzen.response import ProxyTile
-
 
 class StubOpener(object):
 
@@ -22,6 +20,7 @@ def make_stub_opener(stub):
 class TestProxyTile(unittest.TestCase):
 
     def _instance(self, *args, **kwargs):
+        from mapzen.provider.proxy import ProxyTile
         return ProxyTile(*args, **kwargs)
 
     def _makeone(self, url=None, timeout=None, stub_opener=None):

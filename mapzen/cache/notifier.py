@@ -1,3 +1,6 @@
+from mapzen.util import is_valid
+
+
 class Notifier(object):
 
     def __init__(self, cache, on_save):
@@ -17,6 +20,10 @@ class Notifier(object):
         return self.cache.read(layer, coord, format)
 
     def save(self, body, layer, coord, format):
+        # if we received a request for an invalid coordinate, don't
+        # cache or notify it
+        if not is_valid(coord):
+            return None
         result = self.cache.save(body, layer, coord, format)
         data = dict(
             body=body,

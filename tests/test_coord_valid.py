@@ -27,6 +27,12 @@ class TestCoordValid(unittest.TestCase):
             coord = Coordinate(zoom=zoom, column=column, row=row)
             self.failIf(is_valid(coord), coord)
 
+    def test_coord_zoom_too_big(self):
+        from ModestMaps.Core import Coordinate
+        from mapzen.util import is_valid
+        coord = Coordinate(zoom=21, column=1, row=1)
+        self.failIf(is_valid(coord), coord)
+
     def test_valid_coords(self):
         from ModestMaps.Core import Coordinate
         from mapzen.util import is_valid
@@ -35,6 +41,7 @@ class TestCoordValid(unittest.TestCase):
             (2, 1, 1),
             (3, 7, 7),
             (1, 0, 1),
+            (20, 0, 0),
         )
         for (zoom, column, row) in valid_coords:
             coord = Coordinate(zoom=zoom, column=column, row=row)
